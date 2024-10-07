@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategori Detayı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        h3 {
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kategori Detayı</h1>
+
+    <h2><%= category.name %></h2>
+    
+    <form action="/categories/<%= category.id %>" method="POST">
+        <input type="text" name="name" value="<%= category.name %>" required>
+        <button type="submit">Güncelle</button>
+    </form>
+
+    <h3>Gönderiler:</h3>
+    <ul>
+        <% if (category.posts && category.posts.length > 0) { %>
+            <% category.posts.forEach(post => { %>
+                <li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+            <% }); %>
+        <% } else { %>
+            <li>Bu kategoriye ait gönderi bulunmamaktadır.</li>
+        <% } %>
+    </ul>
+
+    <a href="/categories">Geri Dön</a>
+</body>
+</html>

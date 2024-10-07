@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tüm Yorumlar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #007BFF;
+        }
+
+        .comment-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .comment-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comment-item a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .comment-item a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tüm Yorumlar</h1>
+
+        <ul class="comment-list">
+            <% comments.forEach(comment => { %>
+                <li class="comment-item">
+                    <strong><%= comment.commenter %>:</strong> <%= comment.content %> 
+                    (<a href="/comments/<%= comment.id %>">Detaylar</a>)
+                </li>
+            <% }); %>
+        </ul>
+
+        <a href="/posts" class="back-link">Geri Dön</a>
+    </div>
+</body>
+</html>

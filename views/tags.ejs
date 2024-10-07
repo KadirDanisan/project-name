@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiketler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        li {
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Etiketler</h1>
+    <ul>
+        <% if (tags.length > 0) { %>
+            <% tags.forEach(tag => { %>
+                <li>
+                    <span><%= tag.name %></span>
+                    <a href="/tags/<%= tag.id %>">Detayları Gör</a>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <li>Hiç etiket bulunamadı.</li>
+        <% } %>
+    </ul>
+</body>
+</html>

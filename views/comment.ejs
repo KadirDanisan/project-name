@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yorum Detayı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #007BFF;
+        }
+
+        .update-form {
+            margin-top: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yorum Detayı</h1>
+
+        <h2><%= comment.commenter %></h2>
+        <p><%= comment.content %></p>
+
+        <form action="/comments/<%= comment.id %>" method="POST" class="update-form">
+            <input type="text" name="content" value="<%= comment.content %>" required>
+            <input type="text" name="commenter" value="<%= comment.commenter %>" required>
+            <button type="submit">Güncelle</button>
+        </form>
+
+        <a href="/comments" class="back-link">Geri Dön</a>
+    </div>
+</body>
+</html>

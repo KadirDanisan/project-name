@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .content {
+            margin: 20px 0;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .comments-section {
+            margin: 20px 0;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .comment {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+        }
+        .comment h4 {
+            margin: 0 0 5px 0;
+            color: #007bff;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .edit-post {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1><%= post.title %></h1>
+
+    <div class="content">
+        <p><%= post.content %></p>
+    </div>
+
+    <div class="edit-post">
+        <a href="/posts/<%= post.id %>/edit">Postu Düzenle</a>
+    </div>
+
+    <div class="comments-section">
+        <h2>Yorumlar:</h2>
+        <% if (post.comments && post.comments.length > 0) { %>
+            <% post.comments.forEach(comment => { %>
+                <div class="comment">
+                    <h4><%= comment.content %>:</h4>
+                    <p><%= comment.commenter %></p>
+                  
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>Bu gönderiye ait henüz yorum yok.</p>
+        <% } %>
+    </div>
+
+    <a href="/categories/<%= post.category.id %>">Geri Dön</a>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gönderiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .add-post {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tüm Gönderiler</h1>
+
+    <div class="add-post"></div>
+        <a href="/posts/create">Yeni Gönderi Oluştur</a>
+    </div>
+
+    <ul>
+        <% posts.forEach(post => { %>
+            <li>
+                <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+                <p><%= post.content.substring(0, 100) %></p>
+            </li>
+        <% }); %>
+    </ul>
+
+
+    <a href="/categories">Geri Dön</a>
+</body>
+</html>
