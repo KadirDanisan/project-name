@@ -61,4 +61,19 @@ export class PostsController {
   async remove(@Param('id') id: number) {
     return await this.postsService.deletePost(id);
   }
+
+  // Post'a Tag Ekleme
+  @Post(':postId/tags/:tagId')
+  async addTag(@Param('postId') postId: number, @Param('tagId') tagId: number) {
+    return await this.postsService.addTagToPost(postId, tagId);
+  }
+
+  // Post'tan Tag Silme
+  @Delete(':postId/tags/:tagId')
+  async removeTag(
+    @Param('postId') postId: number,
+    @Param('tagId') tagId: number,
+  ) {
+    return await this.postsService.deleteTagFromPost(postId, tagId);
+  }
 }

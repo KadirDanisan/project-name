@@ -81,7 +81,13 @@
                 <div class="comment">
                     <h4><%= comment.content %>:</h4>
                     <p><%= comment.commenter %></p>
-                  
+                    <% if (comment.tags && comment.tags.length > 0) { %>
+                        <div class="tags">
+                            <% comment.tags.forEach(tag => { %>
+                                <span class="tag"><%= tag.name %></span>
+                            <% }); %>
+                        </div>
+                    <% } %>
                 </div>
             <% }); %>
         <% } else { %>

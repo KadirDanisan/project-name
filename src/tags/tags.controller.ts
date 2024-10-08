@@ -30,7 +30,7 @@ export class TagsController {
 
   // Tag Görüntüleme
   @Get(':id')
-  @Render('tag')
+  @Render('comment')
   async findOne(@Param('id') id: string) {
     const tag = await this.tagsService.findTagsById(id);
     return { tag };
